@@ -7,6 +7,11 @@ export class CourseService {
     fetch(`https://wbdv-generic-server.herokuapp.com/api/yiqiandeng/courses`)
       .then(response => response.json())
 
+
+  findCourseById = (cid) =>
+    fetch(`https://wbdv-generic-server.herokuapp.com/api/yiqiandeng/courses/${cid}`)
+      .then(response => response.json())
+
   createCourse = () =>
     fetch(`https://wbdv-generic-server.herokuapp.com/api/yiqiandeng/courses`, {
       method: 'POST',

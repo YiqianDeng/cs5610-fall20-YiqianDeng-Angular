@@ -7,7 +7,7 @@
       {{module.title}}
     </a>
     <input [hidden]="!module.editing" [(ngModel)]="module.title"/>
-    <button class="float-right" [hidden]="module.editing" (click)="deleteModule(module)">Delete</button>
+    <button class="float-right" [hidden]="!module.editing" (click)="deleteModule(module)">Delete</button>
     <button class="float-right" [hidden]="module.editing" (click)="editModule(module)">Edit</button>
     <button class="float-right" [hidden]="!module.editing" (click)="saveModule(module)">Save</button>
   </li>

@@ -10,6 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 export class LessonTabsComponent implements OnInit {
   lessons = [];
   moduleId: '';
+  lessonId: '';
 
   deleteLesson = (lesson) =>
     this.lessonService.deleteLesson(lesson._id)
@@ -33,7 +34,15 @@ export class LessonTabsComponent implements OnInit {
               private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.activeRoute.params.subscribe(params => {
+      const moduleId = params.mid;
+      this.lessonId = params.lid;
+      if (typeof moduleId !== 'undefined') {
+        this.moduleId = moduleId;
+        this.lessonService.findLessonForModule(moduleId)
+          .then(lessons => this.lessons = lessons);
+      }
+    });
 
   }
 

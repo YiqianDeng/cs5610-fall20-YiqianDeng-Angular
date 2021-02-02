@@ -8,21 +8,20 @@ import {FormsModule} from '@angular/forms';
 import {CourseService} from '../services/course-service';
 import {ModuleService} from '../services/module-service';
 import {LessonService} from '../services/lesson-service';
-import { WidgetListComponent } from './widget-list/widget-list.component';
-import { TopicPillsComponent } from './topic-pills/topic-pills.component';
 import { ModuleListComponent } from './module-list/module-list.component';
 import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
-import { CourseListComponent } from './course-list/course-list.component';
+import { CourseTableComponent } from './course-table/course-table.component';
+import { CourseViewerComponent } from './course-viewer/course-viewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseNavigatorComponent,
-    WidgetListComponent,
-    TopicPillsComponent,
+    CourseViewerComponent,
     ModuleListComponent,
     LessonTabsComponent,
-    CourseListComponent
+    CourseTableComponent,
+    CourseViewerComponent
   ],
   imports: [
     BrowserModule,

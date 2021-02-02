@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WidgetListComponent } from './widget-list.component';
+import { CourseViewerComponent } from './course-viewer.component';
 
-describe('WidgetListComponent', () => {
-  let component: WidgetListComponent;
-  let fixture: ComponentFixture<WidgetListComponent>;
+describe('CourseViewerComponent', () => {
+  let component: CourseViewerComponent;
+  let fixture: ComponentFixture<CourseViewerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WidgetListComponent ]
+      declarations: [ CourseViewerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WidgetListComponent);
+    fixture = TestBed.createComponent(CourseViewerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

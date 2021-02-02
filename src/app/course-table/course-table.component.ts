@@ -3,11 +3,11 @@ import {CourseService} from '../../services/course-service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-course-list',
-  templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.css']
+  selector: 'app-course-table',
+  templateUrl: './course-table.component.html',
+  styleUrls: ['./course-table.component.css']
 })
-export class CourseListComponent implements OnInit {
+export class CourseTableComponent implements OnInit {
   newCourseTitle = '';
   courses = [];
   courseId = '';
@@ -35,7 +35,7 @@ export class CourseListComponent implements OnInit {
   ngOnInit(): void {
 
     this.activatedRoute.params.subscribe(params => {
-      this.courseId = params.cid;
+      this.courseId = params.cid
     })
 
     this.courseService.findAllCourses()
