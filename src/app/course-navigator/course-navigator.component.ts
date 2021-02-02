@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseService} from '../../services/course-service';
 import {ModuleService} from '../../services/module-service';
+import {LessonService} from '../../services/lesson-service';
 
 @Component({
   selector: 'app-course-navigator',
@@ -14,6 +15,12 @@ export class CourseNavigatorComponent implements OnInit {
   lessons = [];
   topics = [];
   selectedCourse = {
+    title: ''
+  };
+  selectedModule = {
+    title: ''
+  };
+  selectedLesson = {
     title: ''
   };
 
@@ -48,12 +55,45 @@ export class CourseNavigatorComponent implements OnInit {
       .then(status => this.modules = this.modules.filter(m => m._id !== module._id))
   // this.modules = this.modules.filter(m => m._id !== module._id)
 
-  saveModule = (module) =>
+  saveModule = (module) => {
+    module.editing = false;
     this.moduleService.updateModule(module)
-      .then(status => this.modules = this.modules.map(m => m._id === module._id ? module : m))
+      .then(status => this.modules = this.modules.map(m => m._id === module._id ? module : m));
+  }
+
+  editModule = (module) =>
+    module.editing = true
+
+  selectModule = (module) => {
+    this.selectedModule = module;
+    this.lessonService.findLessonForModule(module._id).then(lessons => this.lessons = lessons);
+  }
+
+  deleteLesson = (lesson) =>
+    this.lessonService.deleteLesson(lesson._id)
+      .then(status => this.lessons = this.lessons.filter(l => l._id !== lesson._id))
+
+  editLesson = (lesson) =>
+    lesson.editing = true
+
+  saveLesson = (lesson) => {
+    lesson.editing = false;
+    this.lessonService.updateLesson(lesson)
+      .then(status => this.lessons = this.lessons.map(l => l._id === lesson._id ? lesson : l));
+  }
+
+  createLessonForModule = (selectedModule) =>
+    this.lessonService.createLessonForModule(selectedModule._id)
+      .then(lesson => this.lessons.push(lesson))
+
+  selectLesson = (lesson) => {
+    this.selectedLesson = lesson;
+  }
+
 
   constructor(private courseService: CourseService,
-              private moduleService: ModuleService) { }
+              private moduleService: ModuleService,
+              private lessonService: LessonService) { }
 
   ngOnInit(): void {
     this.courseService.findAllCourses().then(courses => this.courses = courses);
