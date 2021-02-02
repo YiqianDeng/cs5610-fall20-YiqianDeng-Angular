@@ -3,7 +3,7 @@
   <li
     [ngClass]="{'list-group-item-success': module._id === moduleId}"
     *ngFor="let module of modules" class="list-group-item">
-    <a [hidden]="module.editing" routerLink="/courses/{{courseId}}/modules/{{module._id}}/lessons">
+    <a [hidden]="module.editing" routerLink="/table/courses/{{courseId}}/modules/{{module._id}}/lessons">
       {{module.title}}
     </a>
     <input [hidden]="!module.editing" [(ngModel)]="module.title"/>

@@ -5,7 +5,7 @@
   </li>
   <li *ngFor="let course of courses"
       class="list-group-item">
-    <a [hidden]="course.editing" routerLink="/courses/{{course._id}}/modules">
+    <a [hidden]="course.editing" routerLink="/table/courses/{{course._id}}/modules">
       {{course.title}}
     </a>
     <input [hidden]="!course.editing" [(ngModel)]="course.title"/>

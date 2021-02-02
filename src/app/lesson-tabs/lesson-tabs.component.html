@@ -1,14 +1,17 @@
+<nav>
 <ul class="nav nav-tabs">
   <li class="nav-item"
       *ngFor="let lesson of lessons">
     <a class="nav-link">
-      {{lesson.title}}</a>
+      {{lesson.title}}
     <input  [hidden]="!lesson.editing" [(ngModel)]="lesson.title"/>
     <button [hidden]="!lesson.editing" class="float-right" (click)="deleteLesson(lesson)">Delete</button>
     <button [hidden]="lesson.editing" class="float-right" (click)="editLesson(lesson)">Edit</button>
     <button [hidden]="!lesson.editing" class="float-right" (click)="saveLesson(lesson)">Save</button>
+    </a>
   </li>
   <li>
     <button (click)="createLessonForModule()">Create</button>
   </li>
 </ul>
+</nav>
