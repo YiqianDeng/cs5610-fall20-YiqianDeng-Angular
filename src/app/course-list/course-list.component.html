@@ -1,0 +1,26 @@
+<h4 class="d-flex justify-content-center bg-light">CourseTableComponent</h4>
+<ul class="list-group">
+  <li class="list-group-item active">
+    Courses
+  </li>
+  <li *ngFor="let course of courses"
+      [ngClass]="{'list-group-item-success': course._id === courseId}"
+      class="list-group-item">
+    <a [hidden]="course.editing" routerLink="/courses/{{course._id}}/modules">
+      {{course.title}}
+    </a>
+    <input [hidden]="!course.editing" [(ngModel)]="course.title"/>
+    <button class="float-right" (click)="deleteCourse(course)">
+      Delete
+    </button>
+    <button class="float-right" [hidden]="course.editing" (click)="editCourse(course)">
+      Edit
+    </button>
+    <button class="float-right" [hidden]="!course.editing" (click)="saveCourse(course)">
+      Save
+    </button>
+  </li>
+  <li class="list-group-item">
+    <button class="float-right" (click)="createCourse()">Create</button>
+  </li>
+</ul>
