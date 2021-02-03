@@ -1,0 +1,31 @@
+<h6>Question: {{question.question}}</h6>
+
+<ul class="list-group">
+  <li class="list-group-item label"
+      [ngClass]="{'bg-danger': grading && question.correct == 'false',
+              'bg-success': grading  && question.correct === 'true'}">
+    <label>
+      <input type="radio" value="true" [(ngModel)]="question.answer"
+             (ngModelChange)="answerChange()" name="{{question._id}}"/>True
+    </label>
+    <i class="float-right"
+       [ngClass]="{'fa fa-check':grading  && question.correct === 'true'}"></i>
+    <i class="float-right"
+       [ngClass]="{'fa fa-times': grading && question.answer !== question.correct && question.correct == 'false'}"></i>
+  </li>
+  <li class="list-group-item"
+      [ngClass]="{'bg-danger': grading && question.answer !== question.correct && question.correct == 'true',
+              'bg-success': grading  && question.correct === 'false'}">
+    <label>
+      <input type="radio" value="false" [(ngModel)]="question.answer"
+             (ngModelChange)="answerChange()" name="{{question._id}}"/>False
+    </label>
+    <i class="float-right"
+       [ngClass]="{'fa fa-check':grading  && question.correct === 'false'}"></i>
+    <i class="float-right"
+       [ngClass]="{'fa fa-times': grading && question.answer !== question.correct && question.correct != 'false'}"></i>
+  </li>
+</ul>
+
+Your answer: {{question.answer}}<br>
+<button class="btn btn-success" (click)="grade()">Grade</button>

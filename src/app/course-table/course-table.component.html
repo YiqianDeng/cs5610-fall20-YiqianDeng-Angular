@@ -18,6 +18,11 @@
     <button class="float-right" [hidden]="!course.editing" (click)="saveCourse(course)">
       Save
     </button>
+    <a class="float-right"
+       routerLink="/courses/{{course._id}}/quizzes">
+      Quizzes
+    </a>
+
   </li>
   <li class="list-group-item">
     <button class="float-right" (click)="createCourse()">Create</button>
